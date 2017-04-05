@@ -1,25 +1,19 @@
 'use strict';
 
 module.exports = function(settings) {
-    var ifrm = document.createElement("iframe");
-    var cssEl = document.createElement("link");
-    cssEl.setAttribute("type","text/css");
-    cssEl.setAttribute("href","http://labs.questionpro.com/stylesheets/popup-survey.css");
-    cssEl.setAttribute("rel","stylesheet");
-
-    var surveyDiv = document.createElement("div");
-    surveyDiv.setAttribute("id","qp-survey");
-    surveyDiv.setAttribute("class","qpro-survey");
 
     var surveyURL = 'http://labs.questionpro.com/a/TakeSurvey?id=' + settings.surveyID + '&isMobile=true';
-    ifrm.setAttribute("src", surveyURL);
-    ifrm.style.width = "100%";
-    ifrm.style.height = "480px";
-    ifrm.setAttribute("frameborder",0);
-    surveyDiv.appendChild(ifrm);
 
-    document.body.appendChild(cssEl);
-    document.body.appendChild(surveyDiv);
+    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+    var left = ((width / 2) - (900 / 2)) + dualScreenLeft;
+    var top = ((height / 2) - (500 / 2)) + dualScreenTop;
+
+    var newWindow = window.open(surveyURL, '_blank', 'scrollbars=yes, width=' + 900 + ', height=' + 500 + ', top=' + top + ', left=' + left);
 
 
 };

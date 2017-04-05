@@ -4,7 +4,7 @@ module.exports = {
   propertySettings: {},
   rules: [
     {
-      name: 'Example Rule',
+      name: 'Inline Survey Rule',
       events: [
         {
           modulePath: 'questionpro/src/lib/events/delay.js',
@@ -31,8 +31,36 @@ module.exports = {
           }
         }
       ]
+    },
+{
+    name: 'Popup Survey Rule',
+    events: [
+{
+    modulePath: 'questionpro/src/lib/events/delay.js',
+    settings: {
+	delay: 2000
     }
-  ],
+}
+
+	     ],
+    conditions: [
+{
+    modulePath: 'questionpro/src/lib/conditions/query-parameter.js',
+    settings: {
+	queryParam: 'name',
+	queryParamValue: 'popup'
+    }
+}
+		 ],
+    actions: [
+{
+    modulePath: 'questionpro/src/lib/actions/popup.js',
+    settings: {
+	surveyID:'5445613'
+    }
+}
+      ]
+}],
   dataElements: {
   },
   buildInfo: {
