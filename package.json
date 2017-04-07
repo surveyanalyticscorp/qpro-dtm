@@ -1,0 +1,23 @@
+{
+  "name": "qpro-dtm",
+  "version": "1.0.0",
+  "description": "Hello world extension",
+  "author": "DTM <DTM-Engineering@adobe.com>",
+  "scripts": {
+    "sandbox": "reactor-sandbox"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld.git"
+  },
+  "devDependencies": {
+    "@adobe/reactor-sandbox": "^7.0.0",
+    "@adobe/reactor-turbine": "^18.0.0"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld/issues"
+  },
+  "homepage": "https://github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld#readme",
+  "main": "index.js"
+}

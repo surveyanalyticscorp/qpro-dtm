@@ -1,0 +1,90 @@
+{
+  "displayName": "QuestionPro Survey",
+  "name": "questionpro",
+  "version": "1.0.0",
+  "description": "QuestionPro Survey Extension",
+  "author": {
+    "name": "Shrikant Shinde",
+    "email": "shrikant.shinde@questionpro.com"
+  },
+  "viewBasePath": "src/view/",
+  "events": [{
+    "name": "delay",
+    "displayName": "Delay",
+    "libPath": "src/lib/events/delay.js",
+    "viewPath": "events/delay.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "delay": {
+          "type": "number",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "delay"
+      ],
+      "additionalProperties": false
+    }
+  }],
+  "conditions": [{
+    "name": "query-parameter",
+    "displayName": "Query Parameter",
+    "libPath": "src/lib/conditions/query-parameter.js",
+    "viewPath": "conditions/query-parameter.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "queryParam": {
+          "type": "string",
+          "minLength": 1
+        },
+        "queryParamValue": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "queryParam",
+        "queryParamValue"
+      ],
+      "additionalProperties": false
+    }
+  }],
+
+  "actions": [{
+    "name": "inline",
+    "displayName": "Inline Survey",
+    "libPath": "src/lib/actions/inline.js",
+    "viewPath": "actions/inline.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "surveyID": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    }
+  },{
+    "name": "popup",
+    "displayName": "Popup Survey",
+    "libPath": "src/lib/actions/popup.js",
+    "viewPath": "actions/popup.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "surveyID": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+
+]
+}
