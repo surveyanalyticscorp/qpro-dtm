@@ -6,13 +6,13 @@ module.exports = {
     {
       name: 'Inline Survey Rule',
       events: [
+
         {
           modulePath: 'questionpro/src/lib/events/delay.js',
           settings: {
             delay: 2000
           }
         }
-	
 	       ],
       conditions: [
         {
@@ -27,7 +27,10 @@ module.exports = {
         {
           modulePath: 'questionpro/src/lib/actions/inline.js',
           settings: {
-		surveyID:'5445613'
+		     surveyID:'5445613',
+             custom1El:'ProductCategory',
+             custom2El:'ProductName',
+             custom3El:'OrderID'
           }
         }
       ]
@@ -38,7 +41,8 @@ module.exports = {
 {
     modulePath: 'questionpro/src/lib/events/delay.js',
     settings: {
-	delay: 2000
+	  delay: 2000,
+        clicked:'CheckoutButton'
     }
 }
 

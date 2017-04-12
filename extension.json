@@ -52,7 +52,25 @@
       ],
       "additionalProperties": false
     }
-  }],
+  },
+    {"name": "clicked",
+      "displayName": "Clicked",
+      "libPath": "src/lib/conditions/click.js",
+      "viewPath": "conditions/click.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "clicked": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "clicked"
+        ],
+        "additionalProperties": false
+      }}],
 
   "actions": [{
     "name": "inline",
@@ -65,6 +83,21 @@
       "properties": {
         "surveyID": {
           "type": "number"
+        },
+        "custom1El": {
+          "type":"string"
+        },
+        "custom2El": {
+          "type":"string"
+        },
+        "custom3El": {
+          "type":"string"
+        },
+        "custom4El": {
+          "type":"string"
+        },
+        "custom5El": {
+          "type":"string"
         }
       },
       "additionalProperties": false
