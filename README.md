@@ -1,6 +1,6 @@
 # extension-helloworld
 
-This is a QuestionPro Survey extension for Adobe. It can be used as a starting template for starting to develop your own extension.
+This is a QuestionPro Survey extension for Adobe. 
 
 ## Development Setup
 1. Install [node.js](https://nodejs.org/).
