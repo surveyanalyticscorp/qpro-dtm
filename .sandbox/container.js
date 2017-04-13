@@ -9,7 +9,7 @@ module.exports = {
             {
                 modulePath: 'questionpro/src/lib/events/delay.js',
                 settings: {
-                    delay:1000
+                    delay:5000
                 }
             }
         ],
