@@ -27,7 +27,27 @@
       ],
       "additionalProperties": false
     }
-  }],
+  },
+    {
+      "name": "button-click",
+      "displayName": "Element Click",
+      "libPath": "src/lib/events/buttonClick.js",
+      "viewPath": "events/buttonClick.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "elementID": {
+            "type": "string",
+            "minLength":1
+          }
+        },
+        "required": [
+          "elementID"
+        ],
+        "additionalProperties": false
+      }
+    }],
   "conditions": [{
     "name": "query-parameter",
     "displayName": "Query Parameter",
@@ -52,8 +72,7 @@
       ],
       "additionalProperties": false
     }
-  }
-      ],
+  }],
 
   "actions": [{
     "name": "inline",
