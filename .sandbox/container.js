@@ -15,12 +15,20 @@ module.exports = {
         ],
         conditions: [
             {
+                modulePath: 'questionpro/src/lib/conditions/cookie-value.js',
+                settings: {
+                    cookieName: 'QProSurvey',
+                    cookieValue: '1'
+                }
+            },
+            {
                 modulePath: 'questionpro/src/lib/conditions/query-parameter.js',
                 settings: {
                     queryParam: 'name',
                     queryParamValue: 'shri'
                 }
             }
+
         ],
         actions: [
             {

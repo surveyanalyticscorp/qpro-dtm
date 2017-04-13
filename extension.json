@@ -72,8 +72,32 @@
       ],
       "additionalProperties": false
     }
-  }],
-
+  },{
+    "name": "cookie-value",
+    "displayName": "Cookie Value",
+    "libPath": "src/lib/conditions/cookie-value.js",
+    "viewPath": "conditions/cookie-value.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "cookieName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cookieValue": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "cookieName",
+        "cookieValue"
+      ],
+      "additionalProperties": false
+    }
+  }
+],
   "actions": [{
     "name": "inline",
     "displayName": "Inline Survey",

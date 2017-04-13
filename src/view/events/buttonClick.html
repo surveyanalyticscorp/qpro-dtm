@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Condition</title>
+
+  <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+  <link rel="stylesheet" href="../global.css">
+
+  <script>
+    window.Coral = window.Coral || {};
+    Coral.options = { typeKitId: 'buj6cmr'};
+  </script>
+
+  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+</head>
+<body class="coral--light">
+  <form>
+    <section>
+      <label class="u-gapRight">
+        <span class="label">Element ID</span>
+        <input is="coral-textfield" id="elementID" class="coral-Form-field">
+      </label>
+    </section>
+  </form>
+
+  <script src="//assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  <script>
+    window.extensionBridge.register({
+      init: function(info) {
+        document.getElementById('elementID').value = 'ClickElementID';
+      },
+
+      getSettings: function() {
+        return {
+           elementID: document.getElementById('elementID').value || ''
+        };
+      },
+
+      validate: function() {
+        var elementField = document.getElementById('elementID');
+        elementField.invalid = !elementField.value;
+
+        return !elementField.invalid;
+      }
+    });
+  </script>
+</body>
+</html>
