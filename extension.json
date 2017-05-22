@@ -3,6 +3,7 @@
   "name": "questionpro",
   "version": "1.0.0",
   "description": "QuestionPro Survey Extension",
+  "iconPath": "resources/icons/qp_catalog.svg",
   "author": {
     "name": "Shrikant Shinde",
     "email": "shrikant.shinde@questionpro.com"
