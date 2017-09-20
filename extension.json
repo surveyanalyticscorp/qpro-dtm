@@ -5,8 +5,8 @@
   "description": "QuestionPro Survey Extension",
   "iconPath": "resources/icons/qp_catalog.svg",
   "author": {
-    "name": "Shrikant Shinde",
-    "email": "shrikant.shinde@questionpro.com"
+    "name": "QuestionPro Inc.",
+    "email": "adobe-support@questionpro.com"
   },
   "viewBasePath": "src/view/",
   "events": [{
