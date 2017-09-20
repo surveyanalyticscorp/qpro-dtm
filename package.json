@@ -11,6 +11,7 @@
     "url": "git+ssh://git@github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld.git"
   },
   "devDependencies": {
+    "@adobe/reactor-packager": "^2.6.0",
     "@adobe/reactor-sandbox": "^7.0.0",
     "@adobe/reactor-turbine": "^18.0.0"
   },
