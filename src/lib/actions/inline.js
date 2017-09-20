@@ -32,24 +32,31 @@ module.exports = function(settings) {
 
 function populateVariables(settings) {
     var variables = [];
-    if (typeof settings.custom1El != 'undefined')
-    variables[0] = document.getElementById(settings.custom1El).innerHTML;
+    if (settings.custom1El != '') {
+	variables[0] = document.getElementById(settings.custom1El).innerHTML;
+    }
 
-    if (typeof settings.custom2El != 'undefined')
-    variables[1] = document.getElementById(settings.custom2El).innerHTML;
-
-    if (typeof settings.custom3El != 'undefined')
-    variables[2] = document.getElementById(settings.custom3El).innerHTML;
-
-    if (typeof settings.custom4El != 'undefined')
-    variables[3] = document.getElementById(settings.custom4El).innerHTML;
-
-    if (typeof settings.custom5El != 'undefined')
-    variables[4] = document.getElementById(settings.custom5El).innerHTML;
+    if (settings.custom2El != '') {
+	variables[1] = document.getElementById(settings.custom2El).innerHTML;
+    }
+    
+    if (settings.custom3El != '') {
+	variables[2] = document.getElementById(settings.custom3El).innerHTML;
+    }
 
 
+    if (settings.custom4El != '') {
+	variables[3] = document.getElementById(settings.custom4El).innerHTML;
+    }
+
+
+    if (settings.custom5El != '') {
+	variables[4] = document.getElementById(settings.custom5El).innerHTML;
+    }
+    
     return variables;
 }
+
 function appendVariableParams(variables) {
     var queryParams = "";
     variables.forEach(function (el, index) {
