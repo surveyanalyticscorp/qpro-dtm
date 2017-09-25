@@ -1,150 +1,46 @@
 {
-  "displayName": "QuestionPro Survey",
-  "name": "questionpro",
-  "version": "1.0.0",
-  "description": "QuestionPro Survey Extension",
-  "iconPath": "resources/icons/qp_catalog.svg",
-  "author": {
-    "name": "QuestionPro Inc.",
-    "email": "adobe-support@questionpro.com"
-  },
-  "viewBasePath": "src/view/",
-  "events": [{
-    "name": "delay",
-    "displayName": "Delay",
-    "libPath": "src/lib/events/delay.js",
-    "viewPath": "events/delay.html",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "type": "object",
-      "properties": {
-        "delay": {
-          "type": "number",
-          "minimum": 1
-        }
-      },
-      "required": [
-        "delay"
-      ],
-      "additionalProperties": false
-    }
-  },
+  "actions": [
     {
-      "name": "button-click",
-      "displayName": "Element Click",
-      "libPath": "src/lib/events/buttonClick.js",
-      "viewPath": "events/buttonClick.html",
+      "displayName": "Inline Survey",
+      "libPath": "src/lib/actions/inline.js",
+      "name": "inline",
       "schema": {
         "$schema": "http://json-schema.org/draft-04/schema#",
-        "type": "object",
+        "additionalProperties": false,
         "properties": {
-          "elementID": {
-            "type": "string",
-            "minLength":1
+          "surveyID": {
+            "type": "number"
           }
         },
-        "required": [
-          "elementID"
-        ],
-        "additionalProperties": false
-      }
-    }],
-  "conditions": [{
-    "name": "query-parameter",
-    "displayName": "Query Parameter",
-    "libPath": "src/lib/conditions/query-parameter.js",
-    "viewPath": "conditions/query-parameter.html",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "type": "object",
-      "properties": {
-        "queryParam": {
-          "type": "string",
-          "minLength": 1
-        },
-        "queryParamValue": {
-          "type": "string",
-          "minLength": 1
-        }
+        "type": "object"
       },
-      "required": [
-        "queryParam",
-        "queryParamValue"
-      ],
-      "additionalProperties": false
-    }
-  },{
-    "name": "cookie-value",
-    "displayName": "Cookie Value",
-    "libPath": "src/lib/conditions/cookie-value.js",
-    "viewPath": "conditions/cookie-value.html",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "type": "object",
-      "properties": {
-        "cookieName": {
-          "type": "string",
-          "minLength": 1
+      "viewPath": "actions/inline.html"
+    },
+    {
+      "displayName": "Popup Survey",
+      "libPath": "src/lib/actions/popup.js",
+      "name": "popup",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "additionalProperties": false,
+        "properties": {
+          "surveyID": {
+            "type": "number"
+          }
         },
-        "cookieValue": {
-          "type": "string",
-          "minLength": 1
-        }
+        "type": "object"
       },
-      "required": [
-        "cookieName",
-        "cookieValue"
-      ],
-      "additionalProperties": false
+      "viewPath": "actions/popup.html"
     }
-  }
-],
-  "actions": [{
-    "name": "inline",
-    "displayName": "Inline Survey",
-    "libPath": "src/lib/actions/inline.js",
-    "viewPath": "actions/inline.html",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "type": "object",
-      "properties": {
-        "surveyID": {
-          "type": "number"
-        },
-        "custom1El": {
-          "type":"string"
-        },
-        "custom2El": {
-          "type":"string"
-        },
-        "custom3El": {
-          "type":"string"
-        },
-        "custom4El": {
-          "type":"string"
-        },
-        "custom5El": {
-          "type":"string"
-        }
-      },
-      "additionalProperties": false
-    }
-  },{
-    "name": "popup",
-    "displayName": "Popup Survey",
-    "libPath": "src/lib/actions/popup.js",
-    "viewPath": "actions/popup.html",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "type": "object",
-      "properties": {
-        "surveyID": {
-          "type": "number"
-        }
-      },
-      "additionalProperties": false
-    }
-  }
-
-]
+  ],
+  "author": {
+    "email": "adobe-support@questionpro.com",
+    "name": "QuestionPro Inc."
+  },
+  "description": "QuestionPro Survey Extension",
+  "displayName": "QuestionPro Survey",
+  "iconPath": "resources/icons/qp_catalog.svg",
+  "name": "questionpro",
+  "version": "1.0.1",
+  "viewBasePath": "src/view/"
 }
