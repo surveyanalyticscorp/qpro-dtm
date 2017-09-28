@@ -10,6 +10,9 @@
         "properties": {
           "surveyID": {
             "type": "number"
+          },
+          "custom1El": {
+            "type": "string"
           }
         },
         "type": "object"
