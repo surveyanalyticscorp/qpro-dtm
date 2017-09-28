@@ -32,26 +32,8 @@ module.exports = function(settings) {
 
 function populateVariables(settings) {
     var variables = [];
-    if (settings.custom1El != '') {
-	variables[0] = document.getElementById(settings.custom1El).innerHTML;
-    }
-
-    if (settings.custom2El != '') {
-	variables[1] = document.getElementById(settings.custom2El).innerHTML;
-    }
-    
-    if (settings.custom3El != '') {
-	variables[2] = document.getElementById(settings.custom3El).innerHTML;
-    }
-
-
-    if (settings.custom4El != '') {
-	variables[3] = document.getElementById(settings.custom4El).innerHTML;
-    }
-
-
-    if (settings.custom5El != '') {
-	variables[4] = document.getElementById(settings.custom5El).innerHTML;
+    if (settings.variable1 != '') {
+	    variables[0] = settings.variable1;
     }
     
     return variables;

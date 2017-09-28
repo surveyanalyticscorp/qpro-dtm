@@ -13,6 +13,7 @@
 
   <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
   <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
   <style type="text/css">
 	  .form-label {
 		  padding: 10px 0px 10px 0px;
@@ -23,62 +24,66 @@
   <form>
     <div class="form-label">
       <label>
-        <span class="label">Survey ID</span>
-        <input is="coral-textfield" id="name" class="coral-Form-field">
+        <span class="u-label">Survey ID</span>
+	<span>
+        <input  class="coral-Textfield" is="coral-textfield" id="surveyID" class="coral-Form-field">
+</span>
       </label>
     </div>
+
     <div class="form-label">
       <label>
-        <span class="label">Variable 1 Element</span>
-        <input is="coral-textfield" id="custom1" class="coral-Form-field">
-      </label>
-	</div>
-    <div class="form-label">
-      <label>
-        <span class="label">Variable 2 Element</span>
-        <input is="coral-textfield" id="custom2" class="coral-Form-field">
-      </label>
-	</div>
-    <div class="form-label">
-      <label>
-        <span class="label">Variable 3 Element</span>
-        <input is="coral-textfield" id="custom3" class="coral-Form-field">
-      </label>
-    </div>
-    <div class="form-label">
-      <label>
-        <span class="label">Variable 4 Element</span>
-        <input is="coral-textfield" id="custom4" class="coral-Form-field">
-      </label>
-    </div>
-    <div class="form-label">
-      <label>
-        <span class="label">Variable 5 Element</span>
-        <input is="coral-textfield" id="custom5" class="coral-Form-field">
+        <span class="label">Variable 1</span>
+        <input  is="coral-textfield" id="variable1" class="coral-Form-field">
+        <button class="coral-Button coral-Button--minimal coral-Button--medium" onclick="window.extensionBridge.openDataElementSelector(function(data) {
+          console.log(JSON.stringify(data));
+        });">
+          <span class="coral-Icon coral-Icon--sizeS coral-Icon--data" role="img"></span>
+          <span class="coral-Button-label"></span></button>
       </label>
     </div>
   </form>
 
-  <script src="//assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
   <script>
+
     window.extensionBridge.register({
       init: function(info) {
-        document.getElementById('name').value = (info.settings && info.settings.name) || '';
+        // Populate view with info.settings which will exist if the user is editing something
+        // that was previously saved.
+        if (info.settings) {
+          document.getElementById('name').value = info.settings.name;
+        }
+      },
+      validate: function() {
+        // Return whether the view is valid.
+        return document.getElementById('name').value.length > 0;
+      },
+      getSettings: function() {
+        // Return user-provided settings.
+        return {
+          name: document.getElementById('name').value
+        };
+      }
+    });
+    
+    
+    window.extensionBridge.register({
+      init: function(info) {
+        document.getElementById('surveyID').value = (info.settings && info.settings.surveyID) || '';
       },
 
       getSettings: function() {
         return {
-         surveyID: Number(document.getElementById('name').value),
-         custom1El: document.getElementById('custom1').value,
-          custom2El: document.getElementById('custom2').value,
-          custom3El: document.getElementById('custom3').value,
-          custom4El: document.getElementById('custom4').value,
-          custom5El: document.getElementById('custom5').value
+         surveyID: Number(document.getElementById('surveyID').value),
+         custom1El: document.getElementById('variable1').value,
         };
       },
 
       validate: function() {
         return true;
+      },
+      openDataElementSelector: function () {
+
       }
     });
   </script>

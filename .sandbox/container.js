@@ -9,23 +9,16 @@ module.exports = {
             {
                 modulePath: 'questionpro/src/lib/events/delay.js',
                 settings: {
-                    delay:5000
+                    delay:3000
                 }
             }
         ],
         conditions: [
             {
-                modulePath: 'questionpro/src/lib/conditions/cookie-value.js',
-                settings: {
-                    cookieName: 'QProSurvey',
-                    cookieValue: '1'
-                }
-            },
-            {
                 modulePath: 'questionpro/src/lib/conditions/query-parameter.js',
                 settings: {
                     queryParam: 'name',
-                    queryParamValue: 'shri'
+                    queryParamValue: 'shrikant'
                 }
             }
 
@@ -72,6 +65,12 @@ module.exports = {
           ]
       }],
     dataElements: {
+         myDataElement: {
+           modulePath: 'questionpro/src/lib/dataElements/javascriptVariable.js',
+           settings: {
+               variable1:'variable1'
+           }
+         }
     },
     buildInfo: {
         turbineVersion: "14.0.0",
