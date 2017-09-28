@@ -14,7 +14,7 @@
           "custom1El": {
             "type": "string"
           }
-        },
+        },         
         "type": "object"
       },
       "viewPath": "actions/inline.html"
@@ -43,7 +43,7 @@
   "description": "QuestionPro Survey Extension",
   "displayName": "QuestionPro Survey",
   "iconPath": "resources/icons/qp_catalog.svg",
-  "name": "questionpro",
-  "version": "1.0.1",
+  "name": "questionpro_surveys",
+  "version": "1.0.0",
   "viewBasePath": "src/view/"
 }
