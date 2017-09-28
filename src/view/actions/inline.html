@@ -26,15 +26,15 @@
       <label>
         <span class="u-label">Survey ID</span>
 	<span>
-        <input  class="coral-Textfield" is="coral-textfield" id="surveyID" class="coral-Form-field">
-</span>
+            <input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field">
+        </span>
       </label>
     </div>
 
     <div class="form-label">
       <label>
         <span class="label">Variable 1</span>
-        <input  is="coral-textfield" id="variable1" class="coral-Form-field">
+        <input is="coral-textfield" id="variable1" class="coral-Form-field"/>
         <button class="coral-Button coral-Button--minimal coral-Button--medium" onclick="window.extensionBridge.openDataElementSelector(function(data) {
           console.log(JSON.stringify(data));
         });">
@@ -46,30 +46,33 @@
 
   <script>
 
-    window.extensionBridge.register({
-      init: function(info) {
-        // Populate view with info.settings which will exist if the user is editing something
-        // that was previously saved.
-        if (info.settings) {
-          document.getElementById('name').value = info.settings.name;
-        }
-      },
-      validate: function() {
-        // Return whether the view is valid.
-        return document.getElementById('name').value.length > 0;
-      },
-      getSettings: function() {
-        // Return user-provided settings.
-        return {
-          name: document.getElementById('name').value
-        };
-      }
-    });
+//    window.extensionBridge.register({
+//      init: function(info) {
+//        // Populate view with info.settings which will exist if the user is editing something
+//        // that was previously saved.
+//        if (info.settings) {
+//          document.getElementById('name').value = info.settings.name;
+//        }
+//      },
+//      validate: function() {
+//        // Return whether the view is valid.
+//        return document.getElementById('name').value.length > 0;
+//      },
+//      getSettings: function() {
+//        // Return user-provided settings.
+//        return {
+//          name: document.getElementById('name').value
+//        };
+//      }
+//    });
     
     
     window.extensionBridge.register({
       init: function(info) {
         document.getElementById('surveyID').value = (info.settings && info.settings.surveyID) || '';
+        if(info.settings.surveyID != ""){
+            $('#surveyID').val(info.settings.surveyID);
+        }
       },
 
       getSettings: function() {
