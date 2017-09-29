@@ -2,7 +2,7 @@
 
 module.exports = function(settings) {
 
-    var surveyURL = 'http://labs.questionpro.com/a/TakeSurvey?id=' + settings.surveyID + '&isMobile=true';
+    var surveyURL = 'http://labs.questionpro.com/a/TakeSurvey?id=' + settings.surveyID;
 
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
     var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
