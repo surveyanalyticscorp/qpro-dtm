@@ -36,7 +36,8 @@
         <span class="label">Variable 1</span>
         <input is="coral-textfield" id="variable1" class="coral-Form-field"/>
         <button class="coral-Button coral-Button--minimal coral-Button--medium" onclick="window.extensionBridge.openDataElementSelector(function(data) {
-          console.log(JSON.stringify(data));
+            document.getElementById('variable1').value = JSON.stringify(data);
+            console.log('test '+JSON.stringify(data));
         });">
           <span class="coral-Icon coral-Icon--sizeS coral-Icon--data" role="img"></span>
           <span class="coral-Button-label"></span></button>
@@ -70,9 +71,12 @@
     window.extensionBridge.register({
       init: function(info) {
         document.getElementById('surveyID').value = (info.settings && info.settings.surveyID) || '';
-        if(info.settings.surveyID != ""){
-            $('#surveyID').val(info.settings.surveyID);
+        if(info.settings && info.settings.surveyID){
+            document.getElementById('surveyID').value = info.settings.surveyID;
         }
+        if(info.settings && info.settings.custom1El){
+            document.getElementById('variable1').value = info.settings.custom1El;
+        }       
       },
 
       getSettings: function() {
