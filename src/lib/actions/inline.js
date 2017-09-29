@@ -32,8 +32,8 @@ module.exports = function(settings) {
 
 function populateVariables(settings) {
     var variables = [];
-    if (settings.variable1 != '') {
-	    variables[0] = settings.variable1;
+    if (settings.custom1El != '') {
+	    variables[0] = settings.custom1El;
     }
     
     return variables;
