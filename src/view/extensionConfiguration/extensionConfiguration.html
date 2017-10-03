@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extension Configuration</title>
+
+  <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+  <link rel="stylesheet" href="../global.css">
+  <script>
+    window.Coral = window.Coral || {};
+    Coral.options = { typeKitId: 'buj6cmr'};
+  </script>
+
+  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  <style type="text/css">
+	  .form-label {
+		  padding: 10px 0px 10px 0px;
+	  }
+  </style>
+</head>
+<body class="coral--light">
+  <form>
+    <div class="form-label">
+      <label>
+        <span class="u-label">API Key</span>
+	<span>
+            <input is="coral-textfield" class="coral-Textfield" id="apiKey" class="coral-Form-field">
+        </span>
+      </label>
+    </div>
+  </form>
+
+  <script>
+
+  
+    
+    window.extensionBridge.register({
+      init: function(info) {
+        document.getElementById('apiKey').value = (info.extensionConfiguration && info.extensionConfiguration.apiKey) || '';
+        if(info.extensionConfiguration && info.extensionConfiguration.apiKey){
+            document.getElementById('apiKey').value = info.extensionConfiguration.apiKey;
+        }            
+      },
+
+      getSettings: function() {
+        return {
+         apiKey: document.getElementById('apiKey').value
+        };
+      },
+
+      validate: function() {
+        return true;
+      },
+      
+    });
+    
+    
+    
+  </script>
+</body>
+</html>
