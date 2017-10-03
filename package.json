@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld.git"
+    "url": "git+ssh://git@github.com/surveyanalyticscorp/qpro-dtm.git"
   },
   "devDependencies": {
     "@adobe/reactor-packager": "^2.6.0",
@@ -18,8 +18,8 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld/issues"
+    "url": "https://github.com/surveyanalyticscorp/qpro-dtm/issues"
   },
-  "homepage": "https://github.com/Adobe-Marketing-Cloud-Activation/extension-helloworld#readme",
+  "homepage": "https://github.com/surveyanalyticscorp/qpro-dtm#readme",
   "main": "index.js"
 }
