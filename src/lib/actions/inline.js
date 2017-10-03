@@ -31,19 +31,20 @@ module.exports = function(settings) {
 };
 
 function populateVariables(settings) {
-    var variables = [];
-    if (settings.custom1El != '') {
-	    variables[0] = settings.custom1El;
-    }
-    
+    console.log("populateVariables");
+    console.log("JSON STRING "+settings.customVariables)
+    console.log("JSON.parse(settings.customVariables);    "+JSON.parse(settings.customVariables));
+    var variables = JSON.parse(settings.customVariables);    
     return variables;
 }
 
 function appendVariableParams(variables) {
-    var queryParams = "";
-    variables.forEach(function (el, index) {
-        queryParams += "&custom" + (index+1) + "=" + el;
-    });
-
+    var queryParams = "";  
+    for (var key in variables) {
+      if (variables.hasOwnProperty(key)) {
+          queryParams += "&"+key+"=" + variables[key];
+          console.log(queryParams)
+      }
+    }
     return queryParams;
 }

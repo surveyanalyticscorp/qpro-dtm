@@ -46,6 +46,9 @@
         "properties": {
           "surveyID": {
             "type": "number"
+          },
+          "customVariables": {
+            "type": "string"
           }
         },
         "type": "object"

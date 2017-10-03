@@ -3,7 +3,8 @@
 module.exports = function(settings) {
 
     var surveyURL = 'http://labs.questionpro.com/a/TakeSurvey?id=' + settings.surveyID;
-
+    surveyURL += appendVariableParams(variables);
+    
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
     var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
 
@@ -17,3 +18,22 @@ module.exports = function(settings) {
 
 
 };
+
+function populateVariables(settings) {
+    console.log("populateVariables");
+    console.log("JSON STRING "+settings.customVariables)
+    console.log("JSON.parse(settings.customVariables);    "+JSON.parse(settings.customVariables));
+    var variables = JSON.parse(settings.customVariables);    
+    return variables;
+}
+
+function appendVariableParams(variables) {
+    var queryParams = "";  
+    for (var key in variables) {
+      if (variables.hasOwnProperty(key)) {
+          queryParams += "&"+key+"=" + variables[key];
+          console.log(queryParams)
+      }
+    }
+    return queryParams;
+}
