@@ -1,98 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Action</title>
-
-  <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
-  <link rel="stylesheet" href="../global.css">
-  <script>
-    window.Coral = window.Coral || {};
-    Coral.options = { typeKitId: 'buj6cmr'};
-  </script>
-
-  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
-  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
-  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
-  <script src="/extensionViews/js/global.js"></script>
- <style type="text/css">
-	  .form-label {
-		  padding: 10px 0px 10px 0px;
-	  }
-          span.label{
-                text-align: right;
-                width: 70px;
-                display: inline-block;
-          }
-  </style>
+    <meta charset="UTF-8">
+    <title>Popup Survey Action</title>
+    <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+    <link rel="stylesheet" href="/extensionViews/css/global.css">
+    <script>
+      window.Coral = window.Coral || {};
+      Coral.options = { typeKitId: 'buj6cmr'};
+    </script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+    <script src="/extensionViews/js/global.js"></script>  
 </head>
 <body class="coral--light">
-  <form>
-    <div class="form-label">
-      <label>
-        <span class="label">Survey ID</span>
-	<span>
-            <input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field">                
-        </span>
-      </label>
-    </div>
+    <form>
+        <div class="form-label">
+            <div><h1 class="coral-Heading coral-Heading--1">Survey</h1></div>
+            <div>Select the required survey from the list below</div><br>
+            <div id="surveyList" style="display:none">
+                <select id="surveyID" class="Select-control coral3-Select-button coral-Button coral-Button--secondary coral-Button--block">
+                    <option id="-1" value="-1" class="coral-Button">--Select Survey--</option>                
+                </select>
+            </div>&nbsp;&nbsp;
+            <div style="width:12.5rem;text-align: center" id="surveyLoader" class="coral-Tooltip-drop-target coral-Tooltip-drop-element-attached-top coral-Tooltip-drop-element-attached-center coral-Tooltip-drop-target-attached-bottom coral-Tooltip-drop-target-attached-center">
+                <div>
+                    <div class="coral-Wait waitXS"></div>                
+                </div>                
+            </div>
+        </div>
+    <hr>
+    <br>
+        <div><h1 class="coral-Heading coral-Heading--1">Data Mapping</h1></div>
+        <div>Use Data Elements to capture external data in your survey variables</div>
 
-    <div class="form-label" id="customVariables">
-      <label id="custom1">
-        <span class="label">Variable 1</span>
-        <input is="coral-textfield" id="variable1-DataElement-Value" class="coral-Form-field"/>
-        <button id="variable1-Get-DataElement" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="showDataElementsList(this)">
-          <span class="coral-Icon coral-Icon--sizeS coral-Icon--data" role="img"></span>
-          <span class="coral-Button-label"></span>          
-        </button>        
-        <button id="variable1-Add" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="addCustomVariable(this)">
-          <span class="coral-Icon coral-Icon--sizeS coral-Icon--add" role="img"></span>
-          <span class="coral-Button-label"></span>          
-        </button>  
-        <button id="variable1-Remove" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="removeCustomVariable(this)">
-          <span class="coral-Icon coral-Icon--sizeS coral-Icon--minus" role="img"></span>
-          <span class="coral-Button-label"></span>          
-        </button>        
-      </label>
-    </div>
-  </form>
+        <div class="form-label" id="customVariables">
+            <label id="custom1"><br>
+                <span class="label">Variable 1</span>
+                <input is="coral-textfield" id="variable1-DataElement-Value" class="coral-Form-field"/>
+                <button id="variable1-Get-DataElement" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="showDataElementsList(this)">
+                    <span class="coral-Icon coral-Icon--sizeS coral-Icon--data" role="img"></span>
+                    <span class="coral-Button-label"></span>          
+                </button><button id="variable1-Add" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="addCustomVariable(this)">
+                    <span class="coral-Icon coral-Icon--sizeS coral-Icon--add" role="img"></span>
+                    <span class="coral-Button-label"></span>          
+                </button> <button id="variable1-Remove" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="removeCustomVariable(this)">
+                    <span class="coral-Icon coral-Icon--sizeS coral-Icon--minus" role="img"></span>
+                    <span class="coral-Button-label"></span>          
+                </button>        
+            </label>
+        </div>
+    </form>
 
-  <script>
-    
-    window.extensionBridge.register({
-      init: function(info) {
-        document.getElementById('surveyID').value = (info.settings && info.settings.surveyID) || '';
-        if(info.settings && info.settings.surveyID){
-            document.getElementById('surveyID').value = info.settings.surveyID;
-        }
-        if(info.settings && info.settings.custom1El){
-            document.getElementById('variable1').value = info.settings.custom1El;
-        }  
-        
-        if(info.extensionConfiguration && info.extensionConfiguration.apiKey){
-            var apiKey = info.extensionConfiguration.apiKey;
-            console.log("API Key "+info.extensionConfiguration.apiKey);            
-        }
-      },
-
-      getSettings: function() {
-          console.log("getting settings");          
-          
-        return {
-         surveyID: Number(document.getElementById('surveyID').value),
-         customVariables: JSON.stringify(getVariablesArray())
-        };
-      },
-
-      validate: function() {
-        return true;
-      },
-      openDataElementSelector: function () {
-
-      }
-    });
-    
-       
-  </script>
+    <script>    
+        window.extensionBridge.register({
+            init: function(info) {
+                var sandbox = true;
+                if(sandbox){
+                    var surveyID = 3876937;
+                    var customVariables = "{\"custom1\":\"dataElement4879\",\"custom2\":\"dataElement6434\",\"custom3\":\"dataElement3253\"}";
+                    var apiKey = "usjwx";
+                }else{
+                    var surveyID = info.settings.surveyID;
+                    var customVariables = info.settings.customVariables;
+                    var apiKey = info.extensionConfiguration.apiKey;
+                }
+                if(surveyID){
+                    $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
+                }else{
+                    surveyID = -1;
+                }
+                if(customVariables){
+                    populateMappingData(customVariables);
+                }          
+                if(apiKey){                                  
+                    getSurveys(apiKey,surveyID);
+                }
+            },
+            getSettings: function() {
+                return {
+                    surveyID: Number(document.getElementById('surveyID').value),
+                    customVariables: JSON.stringify(getVariablesArray())
+                };
+            },
+            validate: function() {
+                return true;
+            }
+        });
+    </script>
 </body>
 </html>
