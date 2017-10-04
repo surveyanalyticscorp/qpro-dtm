@@ -40,3 +40,51 @@ function showDataElementsList(element){
     function getCustomVariableCount(){
         return $('#customVariables > label').length;
     }
+    
+    function populateMappingData(customVariables){
+        $('#customVariables').empty();     
+        var customVariablesJson = JSON.parse(customVariables);
+            for (var key in customVariablesJson) {
+                var textBoxIDNumber = Number(key.substr(key.length-1));                
+                var element = '<label id="custom'+textBoxIDNumber+'"><br><span class="label">Variable '+textBoxIDNumber+'</span> <input value="'+customVariablesJson[key]+'" is="coral-textfield" id="variable'+textBoxIDNumber+'-DataElement-Value" class="coral-Form-field"/> <button id="variable'+textBoxIDNumber+'-Get-DataElement" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="showDataElementsList(this)"> <span class="coral-Icon coral-Icon--sizeS coral-Icon--data" role="img"></span> <span class="coral-Button-label"></span></button><button id="variable'+textBoxIDNumber+'-Add" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="addCustomVariable(this)"> <span class="coral-Icon coral-Icon--sizeS coral-Icon--add" role="img"></span> <span class="coral-Button-label"></span> </button> <button id="variable'+textBoxIDNumber+'-Remove" class="coral-Button coral-Button--minimal coral-Button--medium" onclick="removeCustomVariable(this)"> <span class="coral-Icon coral-Icon--sizeS coral-Icon--minus" role="img"></span> <span class="coral-Button-label"></span> </button></label>';
+                $('#customVariables').append(element);                
+            }
+    }
+    
+    function getSurveys(apiKey,surveyID){
+        var http = new XMLHttpRequest();
+        var params = ""; 
+        var url = "https://labs.questionpro.com/a/api/questionpro.survey.getAllSurveys?accessKey="+apiKey;
+        console.log(url);
+        http.open("POST", url, true);
+        http.onreadystatechange = function() {//Call a function when the state changes.
+                console.log('onreadystatechange....');
+                if(http.readyState == 4 && http.status == 200) {
+                    console.log('success....');
+                    jsonParse(http.responseText,surveyID);
+                }else{
+                    console.log('fail....');
+                    console.log(http.status);
+                }
+            }
+            console.log('Sending Params....');
+            http.send(params);
+    }
+    
+    function jsonParse(arr,surveyID){
+        var obj = JSON.parse(arr);
+        var responsesJSON = obj.response;
+        var surveysJSON = responsesJSON['surveys'];
+        var surveys = document.getElementById("surveyID");
+        for(var i=0; i<surveysJSON.length; i++){
+            var option = document.createElement("option");
+            option.text = surveysJSON[i].surveyName;
+            option.value = surveysJSON[i].surveyID;
+            option.id = surveysJSON[i].surveyID;
+            option.class = "coral-Button";
+            surveys.add(option);
+        }   
+        $('#surveyList').show();
+        $('#surveyLoader').hide();
+        $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
+    }
