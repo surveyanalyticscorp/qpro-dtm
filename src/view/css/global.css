@@ -26,7 +26,7 @@ hr{
     margin: 20px 0px;
 }
 select.coral-Button{
-    width:12.5rem;
+    width:auto;
     padding:5px;
     font-weight: normal
 }
