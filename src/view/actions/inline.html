@@ -24,18 +24,47 @@
                 width: 70px;
                 display: inline-block;
           }
+          hr{
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(242, 242, 242);
+                border-image: initial;
+                margin: 20px 0px;
+          }
+          select.coral-Button{
+              width:12.5rem;
+              padding:5px;
+              font-weight: normal
+          }
+          option.coral-Button{
+              font-weight: normal
+          }
   </style>
 </head>
 <body class="coral--light">
   <form>
     <div class="form-label">
       <label>
-        <span class="label">Survey ID</span>
-	<span>
+        <div><h1 class="coral-Heading coral-Heading--1">Survey</h1></div>
+        <div>Select the required survey from the list below</div><br>
+            
+<!--	<span>
             <input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field">                
+        </span>-->
+        <span>
+            <select id="surveyID" class="Select-control coral3-Select-button coral-Button coral-Button--secondary coral-Button--block">
+                <option value="123456" class="coral-Button">Survey 1</option>                
+            </select>
         </span>
+        
+
       </label>
     </div>
+      <br>
+    <hr>
+    <br>
+    <div><h1 class="coral-Heading coral-Heading--1">Data Mapping</h1></div>
+        <div>Use Data Elements to capture external data in your survey variables</div>
 
     <div class="form-label" id="customVariables">
       <label id="custom1"><br>
@@ -72,6 +101,10 @@
         if(info.extensionConfiguration && info.extensionConfiguration.apiKey){
             var apiKey = info.extensionConfiguration.apiKey;
             console.log("API Key "+info.extensionConfiguration.apiKey);            
+            getSurveys(apiKey);
+        }else{
+            var apiKey = "usjwx";
+            getSurveys(apiKey);
         }
       },
 
@@ -92,6 +125,40 @@
       }
     });
     
+    function getSurveys(apiKey){
+        var http = new XMLHttpRequest();
+        var params = ""; 
+        var url = "https://labs.questionpro.com/a/api/questionpro.survey.getAllSurveys?accessKey="+apiKey;
+        console.log(url);
+        http.open("POST", url, true);
+        http.onreadystatechange = function() {//Call a function when the state changes.
+                console.log('onreadystatechange....');
+                if(http.readyState == 4 && http.status == 200) {
+                    console.log('success....');
+                    jsonParse(http.responseText);
+                }else{
+                    console.log('fail....');
+                    console.log(http.status);
+                }
+            }
+            console.log('Sending Params....');
+            http.send(params);
+    }
+    
+    function jsonParse(arr){
+        var obj = JSON.parse(arr);
+        var responsesJSON = obj.response;
+        var surveysJSON = responsesJSON['surveys'];
+        var surveys = document.getElementById("surveyID");
+        for(var i=0; i<surveysJSON.length; i++){
+            var option = document.createElement("option");
+            option.text = surveysJSON[i].surveyName;
+            option.value = surveysJSON[i].surveyID;
+            option.id = surveysJSON[i].surveyID;
+            option.class = "coral-Button";
+            surveys.add(option);
+        }                                   
+    }
     
     
   </script>
