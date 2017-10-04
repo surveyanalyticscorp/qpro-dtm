@@ -44,21 +44,22 @@
 <body class="coral--light">
   <form>
     <div class="form-label">
-      <label>
         <div><h1 class="coral-Heading coral-Heading--1">Survey</h1></div>
         <div>Select the required survey from the list below</div><br>
             
 <!--	<span>
             <input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field">                
         </span>-->
-        <span>
+        <div id="surveyList" style="display:none">
             <select id="surveyID" class="Select-control coral3-Select-button coral-Button coral-Button--secondary coral-Button--block">
-                <option value="123456" class="coral-Button">Survey 1</option>                
+                <option value="-1" class="coral-Button">--Select Survey--</option>                
             </select>
-        </span>
-        
-
-      </label>
+        </div>&nbsp;&nbsp;
+        <div style="width:12.5rem;text-align: center" id="surveyLoader" class="coral-Tooltip-drop-target coral-Tooltip-drop-element-attached-top coral-Tooltip-drop-element-attached-center coral-Tooltip-drop-target-attached-bottom coral-Tooltip-drop-target-attached-center">
+            <div>
+                <div class="coral-Wait waitXS"></div>                
+            </div>                
+        </div>
     </div>
       <br>
     <hr>
@@ -157,7 +158,9 @@
             option.id = surveysJSON[i].surveyID;
             option.class = "coral-Button";
             surveys.add(option);
-        }                                   
+        }   
+        $('#surveyList').show();
+        $('#surveyLoader').hide();
     }
     
     
