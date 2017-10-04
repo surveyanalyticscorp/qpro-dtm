@@ -58,9 +58,9 @@
   ],
   "author": {
     "email": "adobe-support@questionpro.com",
-    "name": "QuestionPro Inc"
+    "name": "QuestionPro Inc."
   },
-  "description": "QuestionPro Survey Extension",
+  "description": "With over 2.5 million users across 100 countries, QuestionPro is the leading provider of online survey software that allows users to generate the insights they need to make better business decisions.",
   "displayName": "QuestionPro Survey",
   "iconPath": "resources/icons/qp_catalog.svg",
   "name": "questionpro",
