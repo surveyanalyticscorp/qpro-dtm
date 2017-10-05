@@ -74,17 +74,23 @@ function showDataElementsList(element){
     function jsonParse(arr,surveyID){
         var obj = JSON.parse(arr);
         var responsesJSON = obj.response;
-        var surveysJSON = responsesJSON['surveys'];
-        var surveys = document.getElementById("surveyID");
-        for(var i=0; i<surveysJSON.length; i++){
-            var option = document.createElement("option");
-            option.text = surveysJSON[i].surveyName;
-            option.value = surveysJSON[i].surveyID;
-            option.id = surveysJSON[i].surveyID;
-            option.class = "coral-Button";
-            surveys.add(option);
-        }   
+        if(responsesJSON){
+            var surveysJSON = responsesJSON['surveys'];        
+            var surveys = document.getElementById("surveyID");
+            for(var i=0; i<surveysJSON.length; i++){
+                var option = document.createElement("option");
+                option.text = surveysJSON[i].surveyName;
+                option.value = surveysJSON[i].surveyID;
+                option.id = surveysJSON[i].surveyID;
+                option.class = "coral-Button";
+                surveys.add(option);
+            }   
+            $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
+        }else{
+            $('#surveyList').empty();
+            $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
+            $('#surveyMsg').text("Please enter a survey ID");
+        }
         $('#surveyList').show();
-        $('#surveyLoader').hide();
-        $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
+        $('#surveyLoader').hide();        
     }
