@@ -58,10 +58,10 @@
   ],
   "author": {
     "email": "adobe-launch@questionpro.com",
-    "name": "QuestionPro Inc."
+    "name": "QuestionPro, Inc."
   },
-  "description": "With over 2.5 million users across 100 countries, QuestionPro is the leading provider of online survey software that allows users to generate the insights they need to make better business decisions.",
-  "displayName": "QuestionPro Survey",
+  "description": "QuestionPro Intercept Surveys is a platform for deploying surveys and collecting attitudinal data at the point of transaction or when users enter / exit your website. This extension can be used by any QuestionPro CX License.",
+  "displayName": "Web Intercept Surveys",
   "iconPath": "resources/icons/qp_catalog.svg",
   "name": "questionpro",
   "version": "1.0.1",
