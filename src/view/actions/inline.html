@@ -59,7 +59,6 @@
     <script>    
         window.extensionBridge.register({
             init: function(info) {
-                console.log("info "+JSON.stringify(info))
                 var surveyID = '';
                 var customVariables = '';
                 var apiKey = '';
@@ -69,14 +68,13 @@
                     apiKey = "usjwx";
                 }else{
                     if(info.settings && info.settings.surveyID){
-                        console.log("info.settings "+JSON.stringify(info.settings));
                         surveyID = info.settings.surveyID;
                     }
                     if(info.settings && info.settings.customVariables){
                         customVariables = info.settings.customVariables;
                     }
-                    if(info.settings && info.settings.apiKey){
-                        apiKey = info.settings.apiKey;
+                    if(info.extensionSettings && info.extensionSettings.apiKey){
+                        apiKey = info.extensionSettings.apiKey;
                     }     
                     console.log("surveyID "+surveyID);                    
                     console.log("customVariables "+customVariables);                    

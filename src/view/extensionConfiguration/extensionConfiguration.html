@@ -56,11 +56,9 @@
     
     window.extensionBridge.register({
       init: function(info) {
-        console.log("info "+JSON.stringify(info));
-        document.getElementById('apiKey').value = (info.settings && info.settings.apiKey) || '';
+        document.getElementById('apiKey').value = (info.extensionSettings && info.extensionSettings.apiKey) || '';
         if(info.settings && info.settings.apiKey){
-            document.getElementById('apiKey').value = info.settings.apiKey;
-            console.log("info.settings "+JSON.stringify(info.settings));            
+            document.getElementById('apiKey').value = info.extensionSettings.apiKey;        
         }            
       },
 
