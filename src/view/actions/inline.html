@@ -68,7 +68,7 @@
                     apiKey = "usjwx";
                 }else{
                     if(info.settings && info.settings.surveyID){
-                        console.log("info.settings "+info.settings);
+                        console.log("info.settings "+JSON.stringify(info.settings));
                         surveyID = info.settings.surveyID;
                     }
                     if(info.settings && info.settings.customVariables){
