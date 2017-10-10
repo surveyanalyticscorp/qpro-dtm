@@ -33,7 +33,7 @@ function showDataElementsList(element){
             var key = this.id;            
             var count = Number(key.substr(key.length-1));
             var textBoxID = 'variable'+count+'-DataElement-Value';
-            jsonData[key] = $('#'+textBoxID).val();            
+            jsonData[key] = '%'+$('#'+textBoxID).val()+'%';
         });
         return jsonData;
     }
