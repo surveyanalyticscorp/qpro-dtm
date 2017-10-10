@@ -30,6 +30,9 @@
           },
           "customVariables": {
             "type": "string"
+          },
+          "apiKey": {
+            "type": "string"
           }
         },         
         "type": "object"
