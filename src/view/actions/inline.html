@@ -91,6 +91,12 @@
                 }          
                 if(apiKey != ''){                                  
                     getSurveys(apiKey,surveyID);
+                }else{
+                    $('#surveyList').empty();
+                    $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
+                    $('#surveyMsg').text("Please enter a survey ID");
+                    $('#surveyList').show();
+                    $('#surveyLoader').hide(); 
                 }
             },
             getSettings: function() {
