@@ -59,15 +59,19 @@
     <script>    
         window.extensionBridge.register({
             init: function(info) {
-                var sandbox = true;
                 if(sandbox){
                     var surveyID = 5816401;
                     var customVariables = "{\"custom1\":\"dataElement7463\",\"custom2\":\"dataElement74\",\"custom3\":\"dataElement7828\",\"custom4\":\"dataElement9988\",\"custom5\":\"dataElement1515\"}";
                     var apiKey = "usjwx";
                 }else{
-                    var surveyID = info.settings.surveyID;
-                    var customVariables = info.settings.customVariables;
-                    var apiKey = info.extensionConfiguration.apiKey;
+                    if(info){
+                        var surveyID = info.settings.surveyID;
+                        console.logs("surveyID "+surveyID);
+                        var customVariables = info.settings.customVariables;
+                        console.logs("customVariables "+customVariables);
+                        var apiKey = info.extensionConfiguration.apiKey;
+                        console.logs("apiKey "+apiKey);
+                    }
                 }
                 if(surveyID){
                     $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");

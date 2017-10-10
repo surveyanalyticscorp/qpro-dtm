@@ -1,3 +1,4 @@
+var sandbox = false;
 function showDataElementsList(element){
         var textBoxID = element.id.split('-')[0];
         textBox = document.getElementById(textBoxID+'-DataElement-Value');
