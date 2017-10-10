@@ -42,7 +42,7 @@ function appendVariableParams(variables) {
     var queryParams = "";  
     for (var key in variables) {
       if (variables.hasOwnProperty(key)) {
-          queryParams += "&"+key+"=" + variables[key];
+          queryParams += "&"+key+"=" + "%"+variables[key]+"%";
           console.log(queryParams)
       }
     }
