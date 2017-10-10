@@ -61,25 +61,47 @@
     <script>    
         window.extensionBridge.register({
             init: function(info) {
+                var surveyID = '';
+                var customVariables = '';
+                var apiKey = '';
                 if(sandbox){
-                    var surveyID = 3876937;
-                    var customVariables = "{\"custom1\":\"dataElement4879\",\"custom2\":\"dataElement6434\",\"custom3\":\"dataElement3253\"}";
-                    var apiKey = "usjwx";
+                    surveyID = 5816401;
+                    customVariables = "{\"custom1\":\"dataElement7463\",\"custom2\":\"dataElement74\",\"custom3\":\"dataElement7828\",\"custom4\":\"dataElement9988\",\"custom5\":\"dataElement1515\"}";
+                    apiKey = "usjwx";
                 }else{
-                    var surveyID = info.settings.surveyID;
-                    var customVariables = info.settings.customVariables;
-                    var apiKey = info.extensionConfiguration.apiKey;
+                    if(info.settings && info.settings.surveyID){
+                        surveyID = info.settings.surveyID;
+                    }
+                    if(info.settings && info.settings.customVariables){
+                        customVariables = info.settings.customVariables;
+                    }
+                    if(info.extensionConfiguration && info.extensionConfiguration.apiKey){
+                        apiKey = info.extensionConfiguration.apiKey;
+                    }     
+                    console.log("surveyID "+surveyID);                    
+                    console.log("customVariables "+customVariables);                    
+                    console.log("apiKey "+apiKey);                    
                 }
-                if(surveyID){
+                if(surveyID != ''){
                     $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
                 }else{
                     surveyID = -1;
+                    $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
                 }
-                if(customVariables){
+                if(customVariables != ''){
                     populateMappingData(customVariables);
                 }          
-                if(apiKey){                                  
+                if(apiKey != ''){                                  
                     getSurveys(apiKey,surveyID);
+                }else{
+                    $('#surveyList').empty();
+                    $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
+                    $('#surveyMsg').text("Please enter a survey ID");
+                    $('#surveyList').show();
+                    $('#surveyLoader').hide(); 
+                    if(surveyID != ''){
+                        $("#surveyID").val(surveyID);
+                    }
                 }
             },
             getSettings: function() {

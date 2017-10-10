@@ -97,6 +97,9 @@
                     $('#surveyMsg').text("Please enter a survey ID");
                     $('#surveyList').show();
                     $('#surveyLoader').hide(); 
+                    if(surveyID != ''){
+                        $("#surveyID").val(surveyID);
+                    }
                 }
             },
             getSettings: function() {
