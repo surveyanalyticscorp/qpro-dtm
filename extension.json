@@ -60,7 +60,7 @@
     "email": "adobe-launch@questionpro.com",
     "name": "QuestionPro, Inc."
   },
-  "description": "QuestionPro Intercept Surveys is a platform for deploying surveys and collecting attitudinal data at the point of transaction or when users enter / exit your website. This extension can be used by any QuestionPro CX License.",
+  "description": "QuestionPro Intercept Surveys is a platform for deploying surveys and collecting attitudinal data at the point of transaction or when users enter / exit your website.",
   "displayName": "Web Intercept Surveys",
   "iconPath": "resources/icons/qp_catalog.svg",
   "name": "questionpro",
