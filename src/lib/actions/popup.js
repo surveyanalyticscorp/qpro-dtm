@@ -3,6 +3,8 @@
 module.exports = function(settings) {
 
     var surveyURL = 'http://labs.questionpro.com/a/TakeSurvey?id=' + settings.surveyID;
+    var  variables = [];
+    variables = populateVariables(settings);
     surveyURL += appendVariableParams(variables);
     
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;

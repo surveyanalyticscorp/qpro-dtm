@@ -5,6 +5,7 @@
     <title>Inline Survey Action</title>
     <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/chosen.css">
     <script>
       window.Coral = window.Coral || {};
       Coral.options = { typeKitId: 'buj6cmr'};
@@ -12,7 +13,8 @@
     <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
     <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
     <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
-    <script src="../js/global.js"></script>  
+    <script src="../js/global.js"></script>
+    <script src="../js/chosen.jquery.min.js"></script>
 </head>
 <body class="coral--light">
     <form>
@@ -21,7 +23,7 @@
             <div id="surveyMsg">Select the required survey from the list below</div><br>
             <div id="surveyList" style="display:none">
                 <select id="surveyID" class="Select-control coral3-Select-button coral-Button coral-Button--secondary coral-Button--block">
-                    <option id="-1" value="-1" class="coral-Button">--Select Survey--</option>                
+<!--                    <option id="-1" value="-1" class="coral-Button">--Select Survey--</option>                -->
                 </select>
             </div>&nbsp;&nbsp;
             <div style="width:12.5rem;text-align: center" id="surveyLoader" class="coral-Tooltip-drop-target coral-Tooltip-drop-element-attached-top coral-Tooltip-drop-element-attached-center coral-Tooltip-drop-target-attached-bottom coral-Tooltip-drop-target-attached-center">

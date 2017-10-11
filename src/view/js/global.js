@@ -89,6 +89,10 @@ function showDataElementsList(element){
                 surveys.add(option);
             }   
             $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
+            $("#surveyID").chosen({
+                inherit_select_classes: false
+            });
+            refreshSelects();
         }else{
             $('#surveyList').empty();
             $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
