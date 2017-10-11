@@ -1,6 +1,6 @@
 {
   "configuration": {
-    "viewPath": "extensionConfiguration/extensionConfiguration.html",
+    "viewPath": "extensionConfiguration.html",
     "schema": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "type": "object",
@@ -31,10 +31,9 @@
           "customVariables": {
             "type": "string"
           }
-        },         
+        },
         "type": "object"
-      },
-      "viewPath": "actions/inline.html"
+      }
     },
     {
       "displayName": "Popup Survey",
@@ -52,8 +51,7 @@
           }
         },
         "type": "object"
-      },
-      "viewPath": "actions/popup.html"
+      }
     }
   ],
   "author": {
@@ -65,5 +63,5 @@
   "iconPath": "resources/icons/qp_catalog.svg",
   "name": "questionpro",
   "version": "1.0.1",
-  "viewBasePath": "src/view/"
+  "viewBasePath": "dist/"
 }

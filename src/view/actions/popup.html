@@ -56,9 +56,9 @@
     <br>
     <div><h1 class="coral-Heading coral-Heading--1">Support</h1></div>
     <div>Please contact <a class='mailto' target='_blank' href='mailto:adobe-launch@questionpro.com'>adobe-launch@questionpro.com</a> if you have questions or issues with the QuestionPro rules & triggers.</div>
-    
 
-    <script>    
+
+    <script>
         window.extensionBridge.register({
             init: function(info) {
                 var surveyID = '';
@@ -77,10 +77,10 @@
                     }
                     if(info.extensionSettings && info.extensionSettings.apiKey){
                         apiKey = info.extensionSettings.apiKey;
-                    }     
-                    console.log("surveyID "+surveyID);                    
-                    console.log("customVariables "+customVariables);                    
-                    console.log("apiKey "+apiKey);                    
+                    }
+                    console.log("surveyID "+surveyID);
+                    console.log("customVariables "+customVariables);
+                    console.log("apiKey "+apiKey);
                 }
                 if(surveyID != ''){
                     $("#surveyID option[id='"+surveyID+"']").attr("selected", "selected");
@@ -90,15 +90,15 @@
                 }
                 if(customVariables != ''){
                     populateMappingData(customVariables);
-                }          
-                if(apiKey != ''){                                  
+                }
+                if(apiKey != ''){
                     getSurveys(apiKey,surveyID);
                 }else{
                     $('#surveyList').empty();
                     $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
                     $('#surveyMsg').text("Please enter a survey ID");
                     $('#surveyList').show();
-                    $('#surveyLoader').hide(); 
+                    $('#surveyLoader').hide();
                     if(surveyID != ''){
                         $("#surveyID").val(surveyID);
                     }

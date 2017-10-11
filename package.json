@@ -4,17 +4,39 @@
   "description": "QuestionPro Surveys Extension",
   "author": "DTM <adobe-support@questionpor.com>",
   "scripts": {
-    "sandbox": "reactor-sandbox"
+    "build": "webpack --production",
+    "package": "npm run build && reactor-packager",
+    "sandbox": "webpack --watch --run-sandbox",
+    "bootstrap": "reactor-sandbox init"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/surveyanalyticscorp/qpro-dtm.git"
   },
+  "dependencies": {
+    "css-loader": "^0.25.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "style-loader": "^0.13.1"
+  },
   "devDependencies": {
     "@adobe/reactor-packager": "^2.6.0",
     "@adobe/reactor-sandbox": "^7.0.0",
     "@adobe/reactor-scaffold": "^1.1.9",
-    "@adobe/reactor-turbine": "^18.0.0"
+    "@adobe/reactor-turbine": "^18.0.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "html-webpack-externals-plugin": "2.1.2",
+    "html-webpack-plugin": "^2.24.1",
+    "react-addons-test-utils": "^15.3.2",
+    "webpack": "^1.13.3",
+    "webpack-shell-plugin": "^0.4.3",
+    "yargs": "^6.3.0"
   },
   "license": "ISC",
   "bugs": {
