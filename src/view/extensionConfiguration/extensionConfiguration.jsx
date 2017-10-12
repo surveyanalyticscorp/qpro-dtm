@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 class ExtensionConfiguration extends Component {
 
+    constructor(props){
+        super(props);
+    }
+
     componentDidMount(){
         window.extensionBridge.register({
             init: function(info) {
@@ -71,8 +75,7 @@ class ExtensionConfiguration extends Component {
                         <div className="form-label">
                             <label>
                                 <span>
-                                    <input is="coral-textfield"
-                                           className="coral-Textfield coral-Form-field" id="apiKey"
+                                    <input className="coral-Textfield coral-Form-field" id="apiKey"
                                            placeholder="API Key"/>
                                 </span>
                             </label>

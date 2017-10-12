@@ -20,31 +20,4 @@
 <body class="coral--light">
     <div id="react-app" class="container"></div>
 </body>
-<script>
-
-
-
-    window.extensionBridge.register({
-        init: function(info) {
-            document.getElementById('apiKey').value = (info.extensionSettings && info.extensionSettings.apiKey) || '';
-            if(info.settings && info.settings.apiKey){
-                document.getElementById('apiKey').value = info.extensionSettings.apiKey;
-            }
-        },
-
-        getSettings: function() {
-            return {
-                apiKey: document.getElementById('apiKey').value
-            };
-        },
-
-        validate: function() {
-            return true;
-        },
-
-    });
-
-
-
-</script>
 </html>

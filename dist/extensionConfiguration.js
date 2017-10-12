@@ -3110,10 +3110,10 @@
 	var ExtensionConfiguration = function (_Component) {
 	    _inherits(ExtensionConfiguration, _Component);
 
-	    function ExtensionConfiguration() {
+	    function ExtensionConfiguration(props) {
 	        _classCallCheck(this, ExtensionConfiguration);
 
-	        return _possibleConstructorReturn(this, (ExtensionConfiguration.__proto__ || Object.getPrototypeOf(ExtensionConfiguration)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (ExtensionConfiguration.__proto__ || Object.getPrototypeOf(ExtensionConfiguration)).call(this, props));
 	    }
 
 	    _createClass(ExtensionConfiguration, [{
@@ -3217,8 +3217,7 @@
 	                                _react2.default.createElement(
 	                                    'span',
 	                                    null,
-	                                    _react2.default.createElement('input', { is: 'coral-textfield',
-	                                        className: 'coral-Textfield coral-Form-field', id: 'apiKey',
+	                                    _react2.default.createElement('input', { className: 'coral-Textfield coral-Form-field', id: 'apiKey',
 	                                        placeholder: 'API Key' })
 	                                )
 	                            )

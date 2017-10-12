@@ -3156,7 +3156,7 @@
 	                        getSurveys(apiKey, surveyID);
 	                    } else {
 	                        $('#surveyList').empty();
-	                        $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
+	                        $('#surveyList').append('<input class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
 	                        $('#surveyMsg').text("Please enter a survey ID");
 	                        $('#surveyList').show();
 	                        $('#surveyLoader').hide();
@@ -3250,28 +3250,25 @@
 	                                { className: 'label' },
 	                                'Variable 1'
 	                            ),
-	                            _react2.default.createElement('input', { is: 'coral-textfield', id: 'variable1-DataElement-Value', className: 'coral-Form-field' }),
+	                            _react2.default.createElement('input', { id: 'variable1-DataElement-Value', className: 'coral-Form-field' }),
 	                            _react2.default.createElement(
 	                                'button',
 	                                { id: 'variable1-Get-DataElement',
-	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
-	                                    onClick: 'showDataElementsList(this)' },
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium' },
 	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--data', role: 'img' }),
 	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'button',
 	                                { id: 'variable1-Add',
-	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
-	                                    onClick: 'addCustomVariable(this)' },
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium' },
 	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--add', role: 'img' }),
 	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'button',
 	                                { id: 'variable1-Remove',
-	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
-	                                    onClick: 'removeCustomVariable(this)' },
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium' },
 	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--minus', role: 'img' }),
 	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
 	                            )

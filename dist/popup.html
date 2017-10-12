@@ -19,32 +19,5 @@
 </head>
 <body class="coral--light">
     <div id="react-app" class="container"></div>
-<script type="text/javascript" src="//unpkg.com/react@^15.3.2/dist/react.min.js"></script><script type="text/javascript" src="//unpkg.com/react-dom@^15.3.2/dist/react-dom.min.js"></script><script type="text/javascript" src="popup.js"></script></body>
-<script>
-
-
-
-    window.extensionBridge.register({
-        init: function(info) {
-            document.getElementById('apiKey').value = (info.extensionSettings && info.extensionSettings.apiKey) || '';
-            if(info.settings && info.settings.apiKey){
-                document.getElementById('apiKey').value = info.extensionSettings.apiKey;
-            }
-        },
-
-        getSettings: function() {
-            return {
-                apiKey: document.getElementById('apiKey').value
-            };
-        },
-
-        validate: function() {
-            return true;
-        },
-
-    });
-
-
-
-</script>
+<script type="text/javascript" src="//unpkg.com/react@^15.3.2/dist/react.js"></script><script type="text/javascript" src="//unpkg.com/react-dom@^15.3.2/dist/react-dom.js"></script><script type="text/javascript" src="popup.js"></script></body>
 </html>
