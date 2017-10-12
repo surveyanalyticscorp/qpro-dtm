@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import {combineReducers, createStore, applyMiddleware } from 'redux';
 import core from './core/Reducer.js';
 
@@ -17,5 +17,5 @@ export default (View) => {
         <Provider store={getStore()}>
             <View/>
         </Provider>
-    ), document.getElementById('container'));
+    ), document.getElementById('react-app'));
 };

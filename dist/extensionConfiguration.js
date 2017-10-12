@@ -106,7 +106,7 @@
 	        _reactRedux.Provider,
 	        { store: getStore() },
 	        _react2.default.createElement(View, null)
-	    ), document.getElementById('container'));
+	    ), document.getElementById('react-app'));
 	};
 
 /***/ }),
@@ -3093,27 +3093,146 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	exports.default = function (_ref) {
-	    var props = _objectWithoutProperties(_ref, []);
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'label',
-	            null,
-	            'Test React'
-	        )
-	    );
-	};
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ExtensionConfiguration = function (_Component) {
+	    _inherits(ExtensionConfiguration, _Component);
+
+	    function ExtensionConfiguration() {
+	        _classCallCheck(this, ExtensionConfiguration);
+
+	        return _possibleConstructorReturn(this, (ExtensionConfiguration.__proto__ || Object.getPrototypeOf(ExtensionConfiguration)).apply(this, arguments));
+	    }
+
+	    _createClass(ExtensionConfiguration, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.extensionBridge.register({
+	                init: function init(info) {
+	                    document.getElementById('apiKey').value = info.extensionSettings && info.extensionSettings.apiKey || '';
+	                    if (info.settings && info.settings.apiKey) {
+	                        document.getElementById('apiKey').value = info.extensionSettings.apiKey;
+	                    }
+	                },
+
+	                getSettings: function getSettings() {
+	                    return {
+	                        apiKey: document.getElementById('apiKey').value
+	                    };
+	                },
+
+	                validate: function validate() {
+	                    return true;
+	                }
+
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h1',
+	                            { className: 'coral-Heading coral-Heading--1' },
+	                            'QuestionPro CX Intercept | Adobe Launch Configuration'
+	                        )
+	                    ),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        'You will need an active QuestionPro CX License to access the API Key. QuestionPro, in partnership with Adobe has a Free Evaluation License for Adobe Launch integration.'
+	                    ),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        'Please contact',
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'mailto',
+	                                target: '_blank',
+	                                href: 'mailto:adobe-launch@questionpro.com' },
+	                            'adobe-launch@questionpro.com'
+	                        ),
+	                        'to request a Free QuestionPro CX Evaluation License.'
+	                    )
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'form',
+	                        null,
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'h1',
+	                                { className: 'coral-Heading coral-Heading--1' },
+	                                'Settings'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            'Please enter your API Key \xA0\xA0',
+	                            _react2.default.createElement(
+	                                'a',
+	                                { target: '_blank',
+	                                    href: 'https://www.questionpro.com/help/generate-api-key.html' },
+	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeXS coral-Icon--infoCircle InfoTip-icon',
+	                                    role: 'img' })
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'form-label' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    null,
+	                                    _react2.default.createElement('input', { is: 'coral-textfield',
+	                                        className: 'coral-Textfield coral-Form-field', id: 'apiKey',
+	                                        placeholder: 'API Key' })
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ExtensionConfiguration;
+	}(_react.Component);
+
+	exports.default = ExtensionConfiguration;
 
 /***/ })
 /******/ ]);

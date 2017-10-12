@@ -1,23 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Extension Configuration</title>
+    <meta charset="UTF-8">
+    <title>Extension Configuration</title>
 
-  <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+    <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
     <link rel="stylesheet" href="../css/global.css">
-  <script>
-    window.Coral = window.Coral || {};
-    Coral.options = { typeKitId: 'buj6cmr'};
-  </script>
+    <script>
+        window.Coral = window.Coral || {};
+        Coral.options = { typeKitId: 'buj6cmr'};
+    </script>
 
-  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
-  <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
-  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
-  
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+
 </head>
 <body class="coral--light">
-    <div id="container" class="container">
+<div class="container">
     <div>
         <div>
             <h1 class="coral-Heading coral-Heading--1">QuestionPro CX Intercept | Adobe Launch Configuration</h1>
@@ -40,42 +40,42 @@
             <div>
                 Please enter your API Key &nbsp;&nbsp;<a target="_blank" href="https://www.questionpro.com/help/generate-api-key.html"><span class="coral-Icon coral-Icon--sizeXS coral-Icon--infoCircle InfoTip-icon" role="img"></span></a>
             </div>
-            <div class="form-label">                
-              <label>               
+            <div class="form-label">
+                <label>
                 <span>
-                    <input is="coral-textfield" class="coral-Textfield" id="apiKey" class="coral-Form-field" placeholder="API Key">                    
-                </span>                
-              </label>
-            </div>            
+                    <input is="coral-textfield" class="coral-Textfield" id="apiKey" class="coral-Form-field" placeholder="API Key">
+                </span>
+                </label>
+            </div>
         </form>
-    </div>    
     </div>
-  <script>
+</div>
+<script>
 
-  
-    
+
+
     window.extensionBridge.register({
-      init: function(info) {
-        document.getElementById('apiKey').value = (info.extensionSettings && info.extensionSettings.apiKey) || '';
-        if(info.settings && info.settings.apiKey){
-            document.getElementById('apiKey').value = info.extensionSettings.apiKey;        
-        }            
-      },
+        init: function(info) {
+            document.getElementById('apiKey').value = (info.extensionSettings && info.extensionSettings.apiKey) || '';
+            if(info.settings && info.settings.apiKey){
+                document.getElementById('apiKey').value = info.extensionSettings.apiKey;
+            }
+        },
 
-      getSettings: function() {
-        return {
-         apiKey: document.getElementById('apiKey').value
-        };
-      },
+        getSettings: function() {
+            return {
+                apiKey: document.getElementById('apiKey').value
+            };
+        },
 
-      validate: function() {
-        return true;
-      },
-      
+        validate: function() {
+            return true;
+        },
+
     });
-    
-    
-    
-  </script>
+
+
+
+</script>
 </body>
 </html>

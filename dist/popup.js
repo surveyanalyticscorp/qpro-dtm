@@ -106,7 +106,7 @@
 	        _reactRedux.Provider,
 	        { store: getStore() },
 	        _react2.default.createElement(View, null)
-	    ), document.getElementById('container'));
+	    ), document.getElementById('react-app'));
 	};
 
 /***/ }),
@@ -3095,19 +3095,221 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function () {
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        'popup2'
-	    );
-	};
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Popup = function (_Component) {
+	    _inherits(Popup, _Component);
+
+	    function Popup() {
+	        _classCallCheck(this, Popup);
+
+	        return _possibleConstructorReturn(this, (Popup.__proto__ || Object.getPrototypeOf(Popup)).apply(this, arguments));
+	    }
+
+	    _createClass(Popup, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.extensionBridge.register({
+	                init: function init(info) {
+	                    var surveyID = '';
+	                    var customVariables = '';
+	                    var apiKey = '';
+	                    if (sandbox) {
+	                        surveyID = 5816401;
+	                        customVariables = "{\"custom1\":\"dataElement7463\",\"custom2\":\"dataElement74\",\"custom3\":\"dataElement7828\",\"custom4\":\"dataElement9988\",\"custom5\":\"dataElement1515\"}";
+	                        apiKey = "usjwx";
+	                    } else {
+	                        if (info.settings && info.settings.surveyID) {
+	                            surveyID = info.settings.surveyID;
+	                        }
+	                        if (info.settings && info.settings.customVariables) {
+	                            customVariables = info.settings.customVariables;
+	                        }
+	                        if (info.extensionSettings && info.extensionSettings.apiKey) {
+	                            apiKey = info.extensionSettings.apiKey;
+	                        }
+	                        console.log("surveyID " + surveyID);
+	                        console.log("customVariables " + customVariables);
+	                        console.log("apiKey " + apiKey);
+	                    }
+	                    if (surveyID != '') {
+	                        $("#surveyID option[id='" + surveyID + "']").attr("selected", "selected");
+	                    } else {
+	                        surveyID = -1;
+	                        $("#surveyID option[id='" + surveyID + "']").attr("selected", "selected");
+	                    }
+	                    if (customVariables != '') {
+	                        populateMappingData(customVariables);
+	                    }
+	                    if (apiKey != '') {
+	                        getSurveys(apiKey, surveyID);
+	                    } else {
+	                        $('#surveyList').empty();
+	                        $('#surveyList').append('<input is="coral-textfield" class="coral-Textfield" id="surveyID" class="coral-Form-field" placeholder="Survey ID">');
+	                        $('#surveyMsg').text("Please enter a survey ID");
+	                        $('#surveyList').show();
+	                        $('#surveyLoader').hide();
+	                        if (surveyID != '') {
+	                            $("#surveyID").val(surveyID);
+	                        }
+	                    }
+	                },
+	                getSettings: function getSettings() {
+	                    return {
+	                        surveyID: Number(document.getElementById('surveyID').value),
+	                        customVariables: JSON.stringify(getVariablesArray())
+	                    };
+	                },
+	                validate: function validate() {
+	                    return true;
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'form',
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'form-label' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'h1',
+	                                { className: 'coral-Heading coral-Heading--1' },
+	                                'Survey'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { id: 'surveyMsg' },
+	                            'Select the required survey from the list below'
+	                        ),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { id: 'surveyList', style: { display: 'none' } },
+	                            _react2.default.createElement('select', { id: 'surveyID',
+	                                className: 'Select-control coral3-Select-button coral-Button coral-Button--secondary coral-Button--block' })
+	                        ),
+	                        '\xA0\xA0',
+	                        _react2.default.createElement(
+	                            'div',
+	                            { style: { width: '12.5rem', textAlign: 'center' },
+	                                id: 'surveyLoader',
+	                                className: 'coral-Tooltip-drop-target coral-Tooltip-drop-element-attached-top coral-Tooltip-drop-element-attached-center coral-Tooltip-drop-target-attached-bottom coral-Tooltip-drop-target-attached-center' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                _react2.default.createElement('div', { className: 'coral-Wait waitXS' })
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h1',
+	                            { className: 'coral-Heading coral-Heading--1' },
+	                            'Data Mapping'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        'Use Data Elements to capture external data in your survey variables'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'form-label', id: 'customVariables' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { id: 'custom1' },
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'label' },
+	                                'Variable 1'
+	                            ),
+	                            _react2.default.createElement('input', { is: 'coral-textfield', id: 'variable1-DataElement-Value', className: 'coral-Form-field' }),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { id: 'variable1-Get-DataElement',
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
+	                                    onclick: 'showDataElementsList(this)' },
+	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--data', role: 'img' }),
+	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { id: 'variable1-Add',
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
+	                                    onclick: 'addCustomVariable(this)' },
+	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--add', role: 'img' }),
+	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { id: 'variable1-Remove',
+	                                    className: 'coral-Button coral-Button--minimal coral-Button--medium',
+	                                    onclick: 'removeCustomVariable(this)' },
+	                                _react2.default.createElement('span', { className: 'coral-Icon coral-Icon--sizeS coral-Icon--minus', role: 'img' }),
+	                                _react2.default.createElement('span', { className: 'coral-Button-label' })
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'h1',
+	                        { className: 'coral-Heading coral-Heading--1' },
+	                        'Support'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'Please contact',
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'mailto',
+	                            target: '_blank', href: 'mailto:adobe-launch@questionpro.com' },
+	                        'adobe-launch@questionpro.com'
+	                    ),
+	                    'if you have questions or issues with the QuestionPro rules & triggers.'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Popup;
+	}(_react.Component);
+
+	exports.default = Popup;
 
 /***/ })
 /******/ ]);
